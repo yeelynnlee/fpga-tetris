@@ -1,10 +1,13 @@
 # FPGA Tetris
 
-This repository contains a SystemVerilog implementation of a playable Tetris game for 1920 × 1080 VGA display on a Nexys A7 FPGA board. The game can be controlled by on-board buttons or an external keyboard, and also plays theme music and sound effects that are read from a SDXC card. 
+This repository contains a SystemVerilog implementation of a playable Tetris game for 1920 × 1080 VGA display on a Nexys A7 FPGA board. The game can be controlled by on-board buttons or an external keyboard, and also plays theme music and sound effects that are read from a SDXC card.
+
+https://github.com/user-attachments/assets/6d8f334e-4b86-4b5f-a544-a0844a0d58a4
+
+
+Below is the high-level block diagram for the system. Other than the SD controller, which requires a 25 MHz clock, all modules run on the 148.5 MHz pixel clock that’s needed for a 60 Hz refresh rate. 
 
 <img width="950" height="442" alt="block diagram" src="https://github.com/user-attachments/assets/c49c8e8a-555c-472e-9678-c8ae0b2b3935" />
-
-Above is the high-level block diagram for the system. Other than the SD controller, which requires a 25 MHz clock, all modules run on the 148.5 MHz pixel clock that’s needed for a 60 Hz refresh rate. 
 
 ## Inputs 
 
@@ -16,7 +19,7 @@ Decoded key signals and button signals are debounced before being passed to leve
 
 The Tetris game controller is implemented as an FSM, a simplified diagram of which is shown below.
 
-<img width="762" height="739" alt="game state diagram" src="https://github.com/user-attachments/assets/020959eb-e6ed-46de-8dac-e9ca10d8f432" />
+<img width="533" height="527" alt="game state diagram" src="https://github.com/user-attachments/assets/3347f9c3-1959-459c-8967-e4777e93730b" />
 
 The 20 × 10 playing grid is conceptualized as 200 squares, with each block occupying four squares within a moving 4 × 4 grid. The locations of a block's four squares are determined by its color, state of rotation, and the x and y position of the top-left corner of its 4 × 4 grid. 
 
